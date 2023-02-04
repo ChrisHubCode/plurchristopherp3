@@ -1,18 +1,21 @@
+/*création d'une variable pour pouvoir cibler la class gallery*/
+const gallery = document.getElementsByClassName("gallery")[0];
+const gall = document.querySelector("#portfolio");
+
+//supression contenu existant
+gallery.innerHTML='';
+
 /*récupération des données de l'API*/
-const call = fetch ("http://localhost:5678/api/works")
+fetch ("http://localhost:5678/api/works")
 .then (function(res){
     if (res.ok){
         return res.json();
     }
 }
 )
-.then (function(value) {
-    console.log(value); /*affichage des données dans la console*/
-}
-)
-.then(function(value) {
-    getElementByClassName("gallery")
-    innerText = value.category; /*test pour afficher des données*/
+.then (function(projects) {
+    console.log(projects);
+    afficherProjets(projects); 
 }
 )
 ;
@@ -20,34 +23,33 @@ const call = fetch ("http://localhost:5678/api/works")
 
 
 
-/*création d'une variable pour pouvoir cibler la class gallery*/
-let gallery = document.getElementsByClassName("gallery");
 
-/*effacer le contenu de la class gallery*/
 
-gallery.innerHTML = ''; /*ne fonctionne pas*/
 
-document.querySelector(".gallery").innerHTML = ''; /*fonctionne*/
+//gallery.innerHTML = ''; 
+
+
 
 /* afficher chaque projet*/
 
-function afficherProjets(project) {
-    for (let i= 0; i < projects.length; i++) {
+function afficherProjets(projects) {
+    for (let project of projects) { 
         //création d'une balise figure
-        const projectFigure = gallery.createElement("figure");
+        const projectFigure = document.createElement("figure");
         //création de la balise image
-        const projectImage = gallery.createElement("img");
+        const projectImage = document.createElement("img");
         //on ajoute la source de la photo
-        projectImage.src = projects[i].imageUrl;
+        projectImage.src = project.imageUrl;
         //ajout de l'alt
-        projectImage.alt = projects[i].title;
+        projectImage.alt = project.title;
         //création de la balise figcaption
-        const projectFigcaption = gallery.createElement("figcaption");
+        const projectFigcaption = document.createElement("figcaption");
         //on ajoute le titre de la photo
-        projectFigcaption.innerText = projects[i].title;
+        projectFigcaption.innerText = project.title;
         //on rattache les éléments entre eux
-        projectImage.appenChild(projectFigure);
-        projectFigcaption.appenChild(projectFigure);
+        gall.appendChild(projectFigure);
+        projectFigure.appendChild(projectImage);
+        //projectFigure.appenChild(projectFigcaption);
 
     }
 }
@@ -62,10 +64,21 @@ class projet {
     }
 }
 
-//création d'une fonction qui édite automatiquement les classes
-
-function creerProjet(project) {
+//création d'une fonction qui édite automatiquement les objets
+/*
+function creerProjet(projects) {
     for (let i = 0; i < projects.length; i++ ) {
-        let projetNumero = new projet(project[i].categoryId, project[i].imageUrl, project[i].title); 
+        arrayProjet.push (new projet(project[i].categoryId, project[i].imageUrl, project[i].title)); 
+        
     }
-}
+}*/
+
+
+
+
+
+
+
+
+
+
