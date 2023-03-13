@@ -96,7 +96,7 @@ function trierProjets(projects) {
 }
 //fonction 
 function afficherProjetsPlus (projects) {
-    if (indexUrl.searchParams.get==null) {
+    if (famille==null) {
         afficherProjets (projects);
     }
     if (famille==1) {
@@ -134,14 +134,25 @@ fetch ("http://localhost:5678/api/works")
 .then (function(projects) {
     console.log(projects);
     trierProjets(projects);  
+    //afficherProjetsPlusAlternatif(projects);
 }
 )
 ;
 
 
 
+function afficherProjetsPlusAlternatif(projects) {
+    if (famille==null) {
+        afficherProjets (projects);
+    } else {
+        for (let project of projects){
+            if (famille==project.categoryId) {
+                afficherProjets(project);
+            }
 
-
+        }
+    } 
+} 
 
 
 
