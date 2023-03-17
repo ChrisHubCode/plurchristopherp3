@@ -1,7 +1,9 @@
 const form = document.querySelector("form");
 //const tokenLogin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4";
+const message= document.querySelector(".errorMessage");
 
-localStorage.clear();
+
+//localStorage.clear();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -28,8 +30,12 @@ form.addEventListener("submit", (e) => {
         }else if (res.status==404) {
             //alert("user not found");
             unknownUser();
+            removeAll()
+            check();
             throw Error("user not found");          
-        }      
+        }else if (res.status==401) {
+            wrongPassword();
+        }     
     })
     
     .then (function (response){        
@@ -44,14 +50,16 @@ form.addEventListener("submit", (e) => {
 function loginUser(response, tokenLogin){
         document.location.href="http://127.0.0.1:5500/FrontEnd/index.html";
         window.localStorage.setItem("token", tokenLogin);
+        
     }
     
 function unknownUser() {
-    const loginSection= document.querySelector("#loginSection");
+    /*const loginSection= document.querySelector("#loginSection");
     const messageAlert=document.createElement("p");
     messageAlert.innerText="Utilisateur inconnu";
     messageAlert.className="messageAlert";
-    loginSection.insertBefore(messageAlert, loginSection.firstChild);
+    loginSection.insertBefore(messageAlert, loginSection.firstChild);*/
+    message.innerText="Utilisateur inconnu";
 }
     
 
@@ -65,15 +73,55 @@ form.mail.addEventListener('change',function() {
     validMail(this);
 });
 
+
+
+
 const validMail = function (inputEmail) {
     let mailRegEx= new RegExp("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$","g");
     testEmail= mailRegEx.test(inputEmail.value);
     console.log(testEmail);
 
     if (testEmail) {
-        alert("valide");
+        message.innerText="";
+        document.getElementById("mail").classList.remove("redAlert");
     } else {
-        alert("pas valide");
+        message.innerText="Veuillez saisir une adresse mail valide";
+        document.getElementById("mail").classList.add("redAlert");
     }
 
+}
+//-------------------vérification champ formulaire--------------
+    
+function check() {
+    if(form.password.value==""&&form.mail.value==""){
+        message.innerText="Veuillez compléter les champs indiqués";
+        document.getElementById("mail").classList.add("redAlert");
+        document.getElementById("password").classList.add("redAlert");
+    } else {
+
+        if(form.password.value==""){
+            message.innerText="Veuillez compléter le champ indiqué";
+            removeAll();
+            document.getElementById("password").classList.add("redAlert");
+        }
+        if(form.mail.value==""){
+            message.innerText="Veuillez compléter le champ indiqué";
+            removeAll();
+            document.getElementById("mail").classList.add("redAlert");
+        }
+    }
+}
+
+function removeAll(){
+    document.getElementById("mail").classList.remove("redAlert");
+    document.getElementById("password").classList.remove("redAlert");
+}
+function wrongPassword(){
+    if(form.password.value==""){
+        message.innerText="Veuillez saisir le mot de passe";
+        document.getElementById("password").classList.add("redAlert");
+    }else{
+        message.innerText="Mot de passe incorrect";
+        document.getElementById("password").classList.add("redAlert"); 
+    }
 }

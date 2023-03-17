@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/e524586f66.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -17,7 +18,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li id="loginNav">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -96,6 +97,15 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+	<aside class="modal">
+		<div class="modalBox">
+			<p class="closeModal">x</p>
+			<p class="galleryPhoto">Galerie photo</p>
+			<div class="galleryModal"></div>
+			<button class="addPhoto">Ajouter une photo</button>
+			<p class="deleteGallery">Supprimer la galerie</p>
+		</div>
+	</aside>
 </main>
 
 <footer>

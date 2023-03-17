@@ -122,3 +122,16 @@ footer {
 	font-size: 28px;
 	padding-bottom: 40px;
 }
+.errorMessage{
+	position: absolute;
+	top: 170px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	transform: translateY(-50%);
+	color: red;
+	font-family: "Syne";
+}
+.redAlert{
+	border: 1px solid red;
+}

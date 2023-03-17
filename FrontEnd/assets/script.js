@@ -75,6 +75,7 @@ function creerFiltres(categories) {
         console.log(newUrl);
         filtreDiv.appendChild(categoryButton);
     }
+    
 }
 
 //fonction tri+affichage
@@ -135,6 +136,7 @@ fetch ("http://localhost:5678/api/works")
     console.log(projects);
     trierProjets(projects);  
     //afficherProjetsPlusAlternatif(projects);
+    afficherModale(projects);
 }
 )
 ;
@@ -153,6 +155,82 @@ function afficherProjetsPlusAlternatif(projects) {
         }
     } 
 } 
+
+
+//----------------creation page admin-------------------------------
+//const headerPoint=document.querySelector("header");
+const bodySelect = document.querySelector("body");
+const iconPen = `<i class="fa-sharp fa-regular fa-pen-to-square"></i>`;
+const login= document.querySelector("#loginNav");
+const iconModif= `<i class="fa-sharp fa-regular fa-pen-to-square"></i> modifier`
+const figModif= document.querySelector("figure");
+
+
+if (localStorage.getItem("token") !== null) {
+    adminMod();
+    loginInOut();
+    
+    
+}
+
+//modification de la page
+function adminMod(){
+    const blackTape= document.createElement("div");
+    blackTape.className="blackTape";
+    bodySelect.prepend(blackTape);
+    const editionMod= document.createElement("p");
+    editionMod.className= "editionMod";
+    editionMod.innerHTML=`<i class="fa-sharp fa-regular fa-pen-to-square"></i> Mode édition`;
+    blackTape.appendChild(editionMod);
+    const publish= document.createElement("button");
+    publish.className= "publish";
+    publish.innerText="publier les changements";
+    blackTape.appendChild(publish);
+
+    const pModif = document.createElement("p");
+    pModif.className="pModif";
+    const pModifUn = document.createElement("p");
+    const PModifProject = document.createElement("p");
+    PModifProject.className= "modifProject";
+    figModif.appendChild(pModif);
+    pModif.innerHTML= iconModif;
+    document.querySelector("article").prepend(pModifUn);
+    pModifUn.innerHTML= iconModif;
+
+    
+}
+function loginInOut(){
+    login.innerHTML="logout";
+    login.addEventListener("click",()=>{
+        alert("click");
+        //localStorage.clear();
+
+    })
+
+}
+
+//----------------------Modale---------------------------------
+const gallModal= document.querySelector(".galleryModal");
+
+
+
+function afficherModale (projects) {
+    for (let project of projects) { 
+        const modalFigure = document.createElement("figure");
+        modalFigure.className= "modalFig";
+        const modalImage = document.createElement("img");
+        modalImage.className= "modalImg";
+        modalImage.src = project.imageUrl;
+        modalImage.alt = project.title;
+        modalImage.crossOrigin = "anonymous";
+        const modalEdit = document.createElement("p");
+        modalEdit.innerText = "éditer";
+        gallModal.appendChild(modalFigure);
+        modalFigure.appendChild(modalImage);
+        modalFigure.appendChild(modalEdit);
+
+    }
+}
 
 
 
