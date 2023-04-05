@@ -36,7 +36,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2 id="myProjectsTitle">Mes Projets</h2>
 		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -99,11 +99,36 @@
 	</section>
 	<aside class="modal">
 		<div class="modalBox">
-			<p class="closeModal">x</p>
+			<span class="closeModal"><i class="fa-solid fa-xmark"></i></span>
 			<p class="galleryPhoto">Galerie photo</p>
 			<div class="galleryModal"></div>
 			<button class="addPhoto">Ajouter une photo</button>
 			<p class="deleteGallery">Supprimer la galerie</p>
+		</div>
+	</aside>
+	<aside class="modalAdd">
+		<div class="modalBoxAdd">
+			<div class="closeReturn">
+				<span class="returnModal"><i class="fa-solid fa-arrow-left"></i></span><span class="closeModalAdd"><i class="fa-solid fa-xmark"></i></span>
+			</div>
+			<p class="titleAdd">Ajout Photo</p>
+			<div class="divAdd">
+				<div class="moduleAdd">
+					<p class="landIcon"><i class="fa-regular fa-image iconMountain"></i></p>
+					<img id="preview">
+					<label class="fileLabel" for="inputFile">+ Ajouter photo</label>
+					<input type="file" id="inputFile" name="inputFile" accept="image/jpeg, image/png" hidden>
+					<p class="specs">jpeg, png: 4mo max</p>
+				</div>
+				<div class="optionPhoto">
+					<p class="titleTitle">Titre</p>
+					<input type="text" class="photoTitle">
+					<p class="catList">Catégorie</p>
+					<select name="categorySelect" id="categorySelect" required></select>
+
+				</div>
+			</div>
+			<button class="validBtn">Valider</button>
 		</div>
 	</aside>
 </main>

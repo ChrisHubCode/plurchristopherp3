@@ -235,7 +235,7 @@ footer nav ul {
 
 /*------------------------modale------------------------------------*/
 
-.modal{
+.modal,.modalAdd{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -245,9 +245,12 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	
+}
+.modal{
 	display: none;
 }
-.modalBox{
+.modalBox,.modalBoxAdd{
 	background-color: white;
 	border-radius: 10px;
 	width: 630px;
@@ -263,7 +266,8 @@ footer nav ul {
 	padding-top: 32px;
 	padding-bottom: 15px;
 }
-.galleryPhoto{
+
+.galleryPhoto,.titleAdd{
 	font-size: 26px;
 	padding-bottom: 46px;
 }
@@ -294,8 +298,144 @@ footer nav ul {
 .modalFig{
 	width: 18%;
 	padding-bottom: 10px;
+	position: relative;
 	
 }
 .modalImg{
 	width: 100%;
+}
+#myProjectsTitle{
+	position: relative;
+}
+.modifProject{
+	
+	position: absolute;
+	padding-left: 10px;
+	top: 8px;
+	color: initial;
+	font-weight: initial;
+	font-family: initial;
+	font-size: initial;
+}
+.arrow,.trash {
+	color: white;
+	background-color: black;
+	border-radius: 5px;
+	padding: 3px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+}
+.arrow{
+	top: 5px;
+	right: 29px;
+	
+}
+
+.trash{
+	top: 5px;
+	right: 5px;
+}
+
+
+/*modale ajout*/
+.modalAdd{
+	display: none;
+}
+.modalBoxAdd{
+	padding-bottom: 55px;
+}
+.closeReturn{
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 32px;
+	padding-bottom: 15px;
+}
+.divAdd{
+	width: 66%;
+	border-bottom: 1px solid #b3b3b3;
+	padding-bottom: 47px;
+	margin-bottom: 28px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.moduleAdd{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #e8f1f6;
+	border-radius: 3px;
+	width: 100%;
+}
+.landIcon{
+	width: 13%;
+	padding-top: 28px;
+	padding-bottom: 20px;
+}
+.iconMountain{
+	font-size: 58px;
+	color: #B9C5C5;
+	display: flex;
+	justify-content: center;
+}
+.fileLabel{
+	background-color: #CBD6DC;
+	color: #306680;
+	border-radius: 50px;
+	padding: 10px 33px;
+}
+.specs{
+	padding-top: 7px;
+	padding-bottom: 19px;
+}
+.validBtn{
+	border-radius: 60px;
+	border: none;
+	background-color: #A7A7A7;
+	color: white;
+	padding: 10px 49px;
+	font-size: 14px;
+}
+.optionPhoto{
+	width: 100%;
+}
+.titleTitle{
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+.photoTitle{
+	width: 100%;
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4PX 14px rgba(0, 0, 0, 0.09);
+}
+#categorySelect{
+	width: 100%;
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4PX 14px rgba(0, 0, 0, 0.09);
+}
+.catList{
+	padding-top: 21px;
+	padding-bottom: 10px;
+}
+
+/*ajout/suppr modales*/
+.clearNone{
+	display: flex;
+}
+.none{
+	display: none;
+}
+
+/*photo preview*/
+
+#preview{
+	max-height: 169px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
