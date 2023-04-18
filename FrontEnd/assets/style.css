@@ -204,18 +204,27 @@ footer nav ul {
 	color: #1D6154;
 
 }
+#loginNav {
+	cursor: pointer;
+}
+#loginNav a {
+	text-decoration: none;
+	color: initial;
+}
+#loginNav a:hover {
+	color: #B1663C;
+}
 /*----------------------page administrateur------------------------*/
 
 .blackTape {
 	display: flex;
 	width: 100%;
-	/*position: absolute;
-	top: 0;*/
 	justify-content: center;
 	align-items: center;
 	background-color: black;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	
 }
 .editionMod {
 	color: white;
@@ -316,6 +325,7 @@ footer nav ul {
 	font-weight: initial;
 	font-family: initial;
 	font-size: initial;
+	cursor: pointer;
 }
 .arrow,.trash {
 	color: white;
@@ -344,6 +354,7 @@ footer nav ul {
 }
 .modalBoxAdd{
 	padding-bottom: 55px;
+	position: relative;
 }
 .closeReturn{
 	width: 90%;
@@ -438,4 +449,17 @@ footer nav ul {
 	max-height: 169px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+}
+.green{
+	background-color: #1D6154;
+}
+
+.arrow, .trash, .addPhoto, .validBtn {
+	cursor: pointer;
+}
+
+#errorForm{
+	position: absolute;
+	color: #D65353;
+	top: 100px;
 }

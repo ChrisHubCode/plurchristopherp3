@@ -18,7 +18,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li id="loginNav">login</li>
+			<li id="loginNav"><a id="loginAnchor" href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -108,6 +108,7 @@
 	</aside>
 	<aside class="modalAdd">
 		<div class="modalBoxAdd">
+			<p id="errorForm"></p>
 			<div class="closeReturn">
 				<span class="returnModal"><i class="fa-solid fa-arrow-left"></i></span><span class="closeModalAdd"><i class="fa-solid fa-xmark"></i></span>
 			</div>
@@ -128,7 +129,7 @@
 
 				</div>
 			</div>
-			<button class="validBtn">Valider</button>
+			<button class="validBtn" id="buttonValid">Valider</button>
 		</div>
 	</aside>
 </main>

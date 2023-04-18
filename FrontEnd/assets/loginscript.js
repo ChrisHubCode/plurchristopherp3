@@ -1,14 +1,11 @@
+//déclaration des variables
 const form = document.querySelector("form");
-//const tokenLogin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4";
 const message= document.querySelector(".errorMessage");
 
 
-//localStorage.clear();
-
 form.addEventListener("submit", (e) => {
     e.preventDefault()
-    console.log("Email:", e.target.mail.value)
-    console.log("password:", e.target.password.value)
+
     let mailValue= e.target.mail.value;
     let passwordValue= e.target.password.value;
     let requestObject={
@@ -28,7 +25,6 @@ form.addEventListener("submit", (e) => {
             return res.json();
 
         }else if (res.status==404) {
-            //alert("user not found");
             unknownUser();
             removeAll()
             check();
@@ -48,17 +44,13 @@ form.addEventListener("submit", (e) => {
 });
 
 function loginUser(response, tokenLogin){
-        document.location.href="http://127.0.0.1:5500/FrontEnd/index.html";
+        //document.location.href="http://127.0.0.1:5500/FrontEnd/index.html";
+        document.location.href="index.html";
         window.localStorage.setItem("token", tokenLogin);
         
     }
     
 function unknownUser() {
-    /*const loginSection= document.querySelector("#loginSection");
-    const messageAlert=document.createElement("p");
-    messageAlert.innerText="Utilisateur inconnu";
-    messageAlert.className="messageAlert";
-    loginSection.insertBefore(messageAlert, loginSection.firstChild);*/
     message.innerText="Utilisateur inconnu";
 }
     
@@ -66,20 +58,14 @@ function unknownUser() {
 //-----------------------regex-----------------------------------------
  
 
-
-
 //ecouter modif mail
 form.mail.addEventListener('change',function() {
     validMail(this);
 });
 
-
-
-
 const validMail = function (inputEmail) {
     let mailRegEx= new RegExp("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$","g");
     testEmail= mailRegEx.test(inputEmail.value);
-    console.log(testEmail);
 
     if (testEmail) {
         message.innerText="";
@@ -121,7 +107,7 @@ function wrongPassword(){
         message.innerText="Veuillez saisir le mot de passe";
         document.getElementById("password").classList.add("redAlert");
     }else{
-        message.innerText="Mot de passe incorrect";
+        message.innerText="Erreur dans l'identifiant ou le mot de passe";
         document.getElementById("password").classList.add("redAlert"); 
     }
 }
